@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inspiration&family=Italianno&family=Island+Moments&family=Irish+Grover&family=IBM+Plex+Mono&family=Inter:wght@400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Sidebar overlay backdrop ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 100;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* ── Sidebar panel ── */
+.sidebar {
+  position: fixed;
+  top: 9.64vw;
+  right: 0;
+  width: 31.25vw;
+  height: calc(100vh - 9.64vw);
+  background: #DEE7C3;
+  overflow: hidden;
+  z-index: 101;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.sidebar.active {
+  transform: translateX(0);
+}
+
+/* ── Sidebar internals (position: absolute, % relative to sidebar dimensions) ── */
+.sidebar-profile-label {
+  width: 88.17%;
+  height: 16.65%;
+  left: 6.5%;
+  top: 2.23%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: black;
+  font-size: 5vw;
+  font-family: Inspiration, cursive;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.sidebar-divider {
+  width: 100%;
+  height: 0;
+  left: 0;
+  top: 22.12%;
+  position: absolute;
+  outline: 1px black solid;
+  outline-offset: -0.5px;
+}
+
+.sidebar-nav-item {
+  text-decoration: none;
+  width: 100%;
+  height: 10.28%;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: black;
+  font-size: 5vw;
+  font-family: Italianno, cursive;
+  font-weight: 400;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+
+.sidebar-nav-item:hover {
+  opacity: 0.7;
+}
+
+.sidebar-branding {
+  width: 100%;
+  height: 16.09%;
+  left: 0.67%;
+  top: 76.87%;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: black;
+  font-size: 7.5vw;
+  font-family: "Island Moments", cursive;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.sidebar-feedback {
+  text-decoration: none;
+  width: 100%;
+  height: 7.37%;
+  left: 1.33%;
+  top: 90.39%;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: black;
+  font-size: 1.25vw;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+
+.sidebar-feedback:hover {
+  opacity: 0.7;
+}
+
+.sidebar-avatar {
+  width: 24%;
+  height: 16.65%;
+  left: 67%;
+  top: 2.23%;
+  position: absolute;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+/* ── Navbar — fixed so it follows the scroll ── */
+.navbar {
+  width: 100%;
+  height: 9.64vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background: #DAD7DD;
+  overflow: hidden;
+  outline: 1px black solid;
+  outline-offset: -1px;
+}
+
+/* ── Header trigger — makes the top-right image feel clickable ── */
+#sidebar-toggle {
+  cursor: pointer;
+}
