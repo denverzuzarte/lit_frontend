@@ -14,21 +14,37 @@ const SIDEBAR_HTML = `
   <a href="/literarium/" class="sidebar-branding" style="text-decoration: none; color: black;">Literarium</a>
   <a href="/feedback/" class="sidebar-feedback">Feedback or report bugs</a>
 
-  <a href="/profile/"><img class="sidebar-avatar" src="/assets/images/shared/avatar-default.png" alt="Profile" /></a>
+  <a href="/profile/"><img class="sidebar-avatar" src="/assets/images/shared/avatar-default.png" onerror="this.src='https://placehold.co/219x219' alt="Profile" /></a>
 </aside>
 `;
 
 function openSidebar() {
   document.getElementById('sidebar').classList.add('active');
   document.getElementById('sidebar-overlay').classList.add('active');
+  cursor_gen();
 }
 
 function closeSidebar() {
   document.getElementById('sidebar').classList.remove('active');
   document.getElementById('sidebar-overlay').classList.remove('active');
+  cursor_gen();
+}
+
+const root_path = "/"
+let newCursor = `url('${root_path}output.png'), pointer`;
+
+function cursor_gen(){
+	const allElements = document.querySelectorAll('*');
+	allElements.forEach(element => {
+		if (window.getComputedStyle(element).cursor === 'pointer') {
+			element.style.cursor = newCursor;
+	      	}
+    	});
+	console.log("hi i genned the cursor : ", newCursor);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
   document.body.insertAdjacentHTML('beforeend', SIDEBAR_HTML);
 
   const toggle = document.getElementById('sidebar-toggle');
@@ -40,4 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeSidebar();
   });
+
+  cursor_gen();
 });
