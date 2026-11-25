@@ -24,7 +24,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
-          path: lit_frontend      # the folder whose contents become the site root
+          path: .
       - id: deployment
         uses: actions/deploy-pages@v4
